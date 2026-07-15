@@ -1,0 +1,15 @@
+feature: Grid sorting
+bindings:
+  - scenario: Sort by name ascending
+    scope: main-grid
+    data:
+      seedRef: users
+    expected:
+      firstRow: Alice
+
+  - scenario: Sort by date descending
+    scope: main-grid
+    data:
+      seedRef: users
+    expected:
+      firstRow: '2026-01-01'

@@ -1,0 +1,24 @@
+# verdaccio — ephemeral private npm registry for version-swap testing ()
+# Used as the second channel in the version-swap mechanism (the design spec):
+# a throwaway Verdaccio instance the candidate library is published to, so a
+# consumer can install it like any registry package with zero pollution of
+# the real registry. Pinned image tag, never :latest (G13 determinism).
+
+services:
+  verdaccio:
+    image: verdaccio/verdaccio:5.31.1
+    container_name: rv-verdaccio
+    ports:
+      - '4873:4873'
+    volumes:
+      - ./config.yaml:/verdaccio/conf/config.yaml:ro
+      - verdaccio-storage:/verdaccio/storage
+    healthcheck:
+      test: ['CMD', 'wget', '--spider', '-q', 'http://localhost:4873/-/ping']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  verdaccio-storage: {}
