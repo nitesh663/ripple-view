@@ -1,0 +1,36 @@
+<div class="dyn-grid-viewer">
+  <h2 class="dyn-grid-viewer__title">dynamic-aggrid — Metadata-driven grid</h2>
+  <p class="dyn-grid-viewer__desc">
+    This grid is built entirely from <code>colsMeta</code> + <code>rowsMeta</code> JSON —
+    <code>dynamic-aggrid</code> maps the metadata into <code>occ-aggrid</code>'s config and
+    renders it internally. Column types (text, number, dropdown, checkbox, action) resolve to
+    op-aggrid renderers/editors automatically.
+  </p>
+
+  <div class="dyn-grid-viewer__toggles">
+    <label><input type="checkbox" [(ngModel)]="showSidebar" /> Sidebar filter</label>
+    <label><input type="checkbox" [(ngModel)]="enablePagination" /> Pagination (size 3)</label>
+  </div>
+
+  <div class="dyn-grid-viewer__grid">
+    <dynamic-aggrid
+      id="employees-dynamic"
+      [colsMeta]="colsMeta"
+      [rowsMeta]="rowsMeta"
+      rowModelType="clientSide"
+      rowSelection="multiple"
+      [headerCheckboxSelection]="true"
+      [paginationPageSize]="pageSize"
+      [filterMeta]="activeFilterMeta"
+      (cellValueChanged)="onCellValueChanged()"
+      (onApplyFilter)="onApplyFilter($event)"
+    ></dynamic-aggrid>
+  </div>
+
+  <div *ngIf="lastEvent" class="dyn-grid-viewer__event"><strong>Last event:</strong> {{ lastEvent }}</div>
+
+  <details class="dyn-grid-viewer__meta">
+    <summary>colsMeta JSON</summary>
+    <pre>{{ colsMeta | json }}</pre>
+  </details>
+</div>

@@ -1,0 +1,15 @@
+<occ-aggrid
+  [id]="id"
+  [columnDefs]="columnDefs"
+  [rowData]="rowData"
+  [gridOptions]="gridOptions"
+  [frameworkComponents]="frameworkComponents"
+  [sidebarDef]="effectiveSidebarDef"
+  [pagination]="pagination"
+  (gridReady)="onGridReady($event)"
+  (selectionChanged)="onSelectionChanged($event)"
+  (cellValueChanged)="onCellValueChanged($event)"
+  (onApplyFilter)="onApplyFilter.emit($event)"
+  (onClearAll)="onClearAll.emit($event)"
+  (onFilterSelectionChange)="onFilterSelectionChange.emit($event)"
+></occ-aggrid>

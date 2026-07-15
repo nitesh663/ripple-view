@@ -1,0 +1,14 @@
+<div class="occ-action-renderer">
+  <button
+    *ngFor="let action of actions; trackBy: trackByActionId"
+    type="button"
+    class="occ-action-btn"
+    [ngClass]="action.styleClass"
+    [title]="(action.label || '') | translate"
+    [attr.aria-label]="(action.label || '') | translate"
+    (click)="onActionClick(action, $event)"
+  >
+    <i *ngIf="action.icon" [ngClass]="action.icon"></i>
+    <span *ngIf="!action.icon">{{ action.label || '' | translate }}</span>
+  </button>
+</div>

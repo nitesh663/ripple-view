@@ -1,0 +1,15 @@
+/* Storybook preview global styles.
+   The PrimeNG theme, primeng base, primeicons and bootstrap are imported as
+   plain CSS in preview.ts; this file holds preview-only layout padding so the
+   controls have breathing room on the canvas. */
+
+body {
+  font-family: var(--font-family, 'Inter', 'Segoe UI', Roboto, sans-serif);
+  color: var(--text-color, #495057);
+}
+
+.op-story-canvas {
+  display: block;
+  max-width: 420px;
+  padding: 1.5rem;
+}

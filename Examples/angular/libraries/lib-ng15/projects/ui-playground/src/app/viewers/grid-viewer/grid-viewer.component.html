@@ -1,0 +1,47 @@
+<div class="grid-viewer">
+  <h2 class="grid-viewer__title">occ-aggrid — Grid + Sidebar Filter</h2>
+  <p class="grid-viewer__desc">
+    Demonstrates cell renderers (colored status, checkbox, action buttons, dropdown), cell
+    editors (text, numeric, dropdown), and the sidebar filter panel built from
+    <code>op-core-controls</code>.
+  </p>
+
+  <div class="grid-viewer__toggles">
+    <label><input type="checkbox" [(ngModel)]="needQuickFilter" /> Quick filter</label>
+    <label><input type="checkbox" [(ngModel)]="pagination" /> Pagination</label>
+    <label>
+      <input type="checkbox" [(ngModel)]="showSidebar" (change)="rebuildSidebar()" /> Sidebar filter
+    </label>
+  </div>
+
+  <div class="grid-viewer__grid">
+    <occ-aggrid
+      id="orders-grid"
+      [columnDefs]="columnDefs"
+      [rowData]="rowData"
+      [frameworkComponents]="frameworkComponents"
+      [sidebarDef]="sidebarDef"
+      [needQuickFilter]="needQuickFilter"
+      [pagination]="pagination"
+      (onApplyFilter)="onApplyFilter($event)"
+      (onClearAll)="onClearAll()"
+      (cellValueChanged)="onCellValueChanged()"
+    ></occ-aggrid>
+  </div>
+
+  <div *ngIf="lastEvent" class="grid-viewer__event">
+    <strong>Last event:</strong> {{ lastEvent }}
+  </div>
+
+  <div class="grid-viewer__panel">
+    <h3>Standalone sidebar filter panel</h3>
+    <occ-filter-sidebar
+      [filterMeta]="filterMeta"
+      filterBarPanelId="orders-grid-standalone"
+      filterPanelName="Order Filters"
+      [enableStickyFilters]="true"
+      (onApplyFilter)="onApplyFilter($event)"
+      (onClearAll)="onClearAll()"
+    ></occ-filter-sidebar>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.app {
+  padding: 16px 24px;
+}
+
+.app__header {
+  margin-bottom: 16px;
+}
+
+.app__filter,
+.app__list,
+.app__field {
+  margin-bottom: 24px;
+  max-width: 320px;
+}
+
+.app__readout {
+  margin-top: 8px;
+}
+
+.rv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}

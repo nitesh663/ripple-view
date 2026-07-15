@@ -1,0 +1,68 @@
+﻿<div class="target-shell">
+  <div class="target-shell__grid ag-theme-alpine">
+    <dynamic-aggrid
+      id="target-grid"
+      [colsMeta]="colsMeta"
+      [rowsMeta]="rowsMeta"
+      rowSelection="single"
+      (selectionChanged)="onSelectionChanged($event)">
+    </dynamic-aggrid>
+  </div>
+
+  <aside class="target-shell__detail" *ngIf="selectedRow" aria-label="Selected target details">
+    <h3 class="target-shell__detail-title">Row Details</h3>
+
+    <div class="target-shell__detail-fields">
+      <op-cc-input
+        label="ID"
+        [ngModel]="selectedRow.id.toString()"
+        [disabled]="true">
+      </op-cc-input>
+
+      <op-cc-input
+        label="Name"
+        [ngModel]="selectedRow.name"
+        [disabled]="true">
+      </op-cc-input>
+
+      <op-cc-dropdown
+        label="Region"
+        [options]="regionOptions"
+        [ngModel]="selectedRow.region"
+        [disabled]="true">
+      </op-cc-dropdown>
+
+      <op-cc-dropdown
+        label="Category"
+        [options]="categoryOptions"
+        [ngModel]="selectedRow.category"
+        [disabled]="true">
+      </op-cc-dropdown>
+
+      <op-cc-dropdown
+        label="Status"
+        [options]="statusOptions"
+        [ngModel]="selectedRow.status"
+        [disabled]="true">
+      </op-cc-dropdown>
+
+      <op-cc-input
+        label="Budget ($K)"
+        [ngModel]="selectedRow.budget.toString()"
+        [disabled]="true">
+      </op-cc-input>
+
+      <op-cc-input
+        label="Actual ($K)"
+        [ngModel]="selectedRow.actual.toString()"
+        [disabled]="true">
+      </op-cc-input>
+    </div>
+  </aside>
+
+  <aside class="target-shell__detail target-shell__detail--empty" *ngIf="!selectedRow" aria-label="No target selected">
+    <span class="pi pi-hand-pointer" aria-hidden="true"></span>
+    <p>Click a row to view details</p>
+  </aside>
+</div>
+

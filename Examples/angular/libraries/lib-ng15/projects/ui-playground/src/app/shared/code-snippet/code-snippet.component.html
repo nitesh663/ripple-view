@@ -1,0 +1,10 @@
+<div class="op-code">
+  <div class="op-code__bar">
+    <span class="op-code__lang">{{ language }}</span>
+    <button type="button" class="op-code__copy" (click)="copy()">
+      <i class="pi" [ngClass]="copied ? 'pi-check' : 'pi-copy'"></i>
+      {{ (copied ? 'COMMON.COPIED' : 'COMMON.COPY') | translate }}
+    </button>
+  </div>
+  <pre class="op-code__pre"><code>{{ code }}</code></pre>
+</div>

@@ -1,0 +1,9 @@
+<div class="occ-groupby-panel">
+  <label
+    *ngFor="let column of columns; trackBy: trackByColId"
+    class="occ-groupby-panel__row"
+  >
+    <input type="checkbox" [checked]="isGrouped(column)" (change)="toggleGroup(column, $event)" />
+    <span>{{ headerName(column) }}</span>
+  </label>
+</div>

@@ -1,0 +1,46 @@
+<form [formGroup]="form" class="occ-filter-form">
+  <div *ngFor="let field of filterMeta" class="occ-filter-form__field">
+    <ng-container [ngSwitch]="field.type || (field.options?.length ? 'dropdown' : 'input')">
+      <op-cc-dropdown
+        *ngSwitchCase="'dropdown'"
+        [control]="controlFor(field.key)"
+        [options]="optionsFor(field)"
+        [label]="field.value | translate"
+        [placeholder]="field.placeholder || ''"
+        [isMandatory]="!!field.mandatory"
+        [showClear]="true"
+        [floating]="true"
+        (onChange)="emitValues()"
+      ></op-cc-dropdown>
+
+      <op-cc-multiselect-dropdown
+        *ngSwitchCase="'multiselect'"
+        [control]="controlFor(field.key)"
+        [options]="optionsFor(field)"
+        [label]="field.value | translate"
+        [isMandatory]="!!field.mandatory"
+        [floating]="true"
+        (onChange)="emitValues()"
+      ></op-cc-multiselect-dropdown>
+
+      <op-cc-datepicker
+        *ngSwitchCase="'datepicker'"
+        [control]="controlFor(field.key)"
+        [label]="field.value | translate"
+        [isMandatory]="!!field.mandatory"
+        [floating]="true"
+        (onChange)="emitValues()"
+      ></op-cc-datepicker>
+
+      <op-cc-input
+        *ngSwitchDefault
+        [control]="controlFor(field.key)"
+        [label]="field.value | translate"
+        [placeholder]="field.placeholder || ''"
+        [isMandatory]="!!field.mandatory"
+        [floating]="true"
+        (onChange)="emitValues()"
+      ></op-cc-input>
+    </ng-container>
+  </div>
+</form>

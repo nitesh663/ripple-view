@@ -1,0 +1,22 @@
+<div class="product-grid">
+  <div class="product-grid__toolbar">
+    <label class="product-grid__filter-label" for="status-filter">Status</label>
+    <op-cc-dropdown
+      id="status-filter"
+      label="Status"
+      [options]="statusOptions"
+      [(ngModel)]="selectedStatus"
+      placeholder="All statuses">
+    </op-cc-dropdown>
+  </div>
+
+  <div class="product-grid__grid ag-theme-alpine">
+    <occ-aggrid
+      id="product-grid"
+      [columnDefs]="columnDefs"
+      [rowData]="filteredRows"
+      [sidebarDef]="sidebarDef"
+      [needQuickFilter]="false">
+    </occ-aggrid>
+  </div>
+</div>

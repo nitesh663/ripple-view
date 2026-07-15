@@ -1,0 +1,45 @@
+<div class="occ-filter-sidebar">
+  <occ-filter-titlebar
+    [title]="filterPanelName || labels.title"
+    [showClose]="false"
+  ></occ-filter-titlebar>
+
+  <div class="occ-filter-sidebar__body">
+    <ng-container *ngIf="!showSaveForm">
+      <occ-filter-sidebar-form
+        [filterMeta]="filterMeta"
+        [initialValues]="initialValues"
+        (valueChange)="onFormValueChange($event)"
+      ></occ-filter-sidebar-form>
+
+      <div class="occ-filter-sidebar__actions">
+        <button type="button" class="occ-btn occ-btn--ghost" (click)="clearAll()">
+          {{ labels.clearAll | translate }}
+        </button>
+        <button type="button" class="occ-btn occ-btn--ghost" (click)="openSaveForm()">
+          {{ labels.save | translate }}
+        </button>
+        <button type="button" class="occ-btn occ-btn--primary" (click)="applyFilter()">
+          {{ labels.apply | translate }}
+        </button>
+      </div>
+
+      <section class="occ-filter-sidebar__saved">
+        <h4 class="occ-filter-sidebar__saved-title">{{ labels.savedFilters | translate }}</h4>
+        <occ-saved-filters-sidebar
+          [savedFilters]="savedFilters"
+          (applyFilter)="applySavedFilter($event)"
+          (deleteFilter)="deleteSavedFilter($event)"
+        ></occ-saved-filters-sidebar>
+      </section>
+    </ng-container>
+
+    <occ-save-configuration-sidebar
+      *ngIf="showSaveForm"
+      [filterBarPanelId]="filterBarPanelId"
+      [values]="currentValues"
+      (save)="saveConfiguration($event)"
+      (cancel)="cancelSave()"
+    ></occ-save-configuration-sidebar>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "name": "@op/react-core-controls",
+  "version": "19.2.0",
+  "type": "module",
+  "main": "./dist/react-core-controls.cjs",
+  "module": "./dist/react-core-controls.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/react-core-controls.js",
+      "require": "./dist/react-core-controls.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json --emitDeclarationOnly && vite build"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "primereact": "^10.0.0",
+    "primeicons": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.0"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}

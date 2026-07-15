@@ -1,0 +1,247 @@
+{
+  "version": "1",
+  "fixtures": [
+    {
+      "id": "ng17-orders-datagrid-compatible",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "17",
+        "path": "angular/apps/ng-17/orders-app"
+      },
+      "library": {
+        "name": "@op/data-grid",
+        "version": "17.1.0",
+        "path": "angular/libraries/lib-ng17/projects/data-grid"
+      },
+      "expectedVerdict": "pass",
+      "expectedFindingClass": "none",
+      "expectedConfidence": "high",
+      "expectedDrift": "none",
+      "signal": "drift-only",
+      "notes": "REAL: 17.1.0 adds DataGrid.pagination, purely additive (defaults false, byte-identical render to 17.0.0). Built, tagged, and published to Verdaccio against the real Angular 17.3.12/PrimeNG 17.18/AG Grid 30.2.1 toolchain. orders-app-ng17 (angular/apps/ng-17/orders-app) is a real, production-buildable consumer app installing this from Verdaccio, verified end-to-end in a real Chrome instance. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng17-orders-datagrid-visual-regression",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "17",
+        "path": "angular/apps/ng-17/orders-app"
+      },
+      "library": {
+        "name": "@op/data-grid",
+        "version": "17.2.0",
+        "path": "angular/libraries/lib-ng17/projects/data-grid"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "visual",
+      "expectedConfidence": "low",
+      "expectedDrift": "high",
+      "signal": "visual-regression",
+      "notes": "REAL, verified regression: same defect as the ng15 line's data-grid-visual-regression \u2014 17.2.0 wraps the AG Grid in a container div with 16px padding that didn't exist at 17.0.0/17.1.0, still Layer-0 clean (a var() reference). Confirmed in a real Chrome instance against the real Angular 17/AG Grid 30 toolchain, zero console errors. orders-app-ng17 (angular/apps/ng-17/orders-app) is a real, production-buildable consumer app installing the candidate from Verdaccio. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng17-admin-multiselect-semantic-regression",
+      "app": {
+        "name": "admin-app",
+        "framework": "angular",
+        "generation": "17",
+        "path": "angular/apps/ng-17/admin-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "17.2.0",
+        "path": "angular/libraries/lib-ng17/projects/core-controls"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "semantic",
+      "expectedConfidence": "low",
+      "expectedDrift": "high",
+      "signal": "semantic-regression",
+      "notes": "REAL, verified regression: same defect as the ng15 line's core-controls-multiselect-semantic-regression \u2014 17.2.0 switches MultiSelect's optionValue from \"value\" to \"label\". Looks identical, emits the wrong data. Confirmed in a real Chrome instance: selecting \"Open\" emits \"Open\", not \"open\", zero console errors. This same 17.2.0 release ALSO carries a build/peer-dep break (see core-controls-peer-dep-break-ng17 below) \u2014 a real-world breaking release plausibly bundles more than one change. admin-app-ng17 (angular/apps/ng-17/admin-app) is a real, production-buildable consumer app installing core-controls from Verdaccio. Fully real fixture, both halves."
+    },
+    {
+      "id": "react19-settings-multiselect-semantic-regression",
+      "app": {
+        "name": "settings-app",
+        "framework": "react",
+        "generation": "19",
+        "path": "react/apps/r-19/settings-app"
+      },
+      "library": {
+        "name": "@op/react-core-controls",
+        "version": "19.2.0",
+        "path": "react/libraries/lib-r19/core-controls"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "semantic",
+      "expectedConfidence": "low",
+      "expectedDrift": "high",
+      "signal": "semantic-regression",
+      "notes": "REAL, verified regression: same defect class as both Angular lines \u2014 19.2.0 switches MultiSelect's optionValue from \"value\" to \"label\" (react/libraries/lib-r19/core-controls/src/RippleViewMultiSelect.tsx). Looks identical, emits the wrong data. Confirmed in a real Chrome instance via the lib-r19 playground: selecting \"Open\" emits \"Open\", not \"open\", zero console errors. This is the React side's deliberately reduced scope: ONE generation (react19 only, no react18 line), ONE bundled package (@op/react-core-controls \u2014 Button/Input/MultiSelect/Form, mirroring Angular's core-controls bundling decision), no DataGrid, no shared-services package, and TWO consumer apps only (orders-app, settings-app \u2014 no mid-migration twin, since there's only one generation). settings-app (react/apps/r-19/settings-app) is now a real, production-buildable standalone Vite app \u2014 its own package.json/vite.config.ts/node_modules, installing core-controls from Verdaccio \u2014 using MultiSelect (shared with orders-app) and Input (unique to settings-app). React exists to prove the framework's cross-framework agnosticism, not as a second primary target. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng15-billing-core-controls-drift-only",
+      "app": {
+        "name": "billing-app",
+        "framework": "angular",
+        "generation": "15",
+        "path": "angular/apps/ng-15/billing-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "15.0.0",
+        "path": "angular/libraries/lib-ng15/projects/core-controls"
+      },
+      "expectedVerdict": "pass",
+      "expectedFindingClass": "none",
+      "expectedConfidence": "medium",
+      "expectedDrift": "high",
+      "signal": "drift-only",
+      "notes": "REAL: billing-app-ng15 (angular/apps/ng-15/billing-app) is a real, production-buildable consumer app, deliberately pinned to core-controls@15.0.0 (a literal package.json pin, the \"currently deployed\" straggler state) while 15.1.0/15.2.0 are real, published versions on the SAME ng15 line. No behavior change at 15.0.0 itself, so it still PASSES today, but drift score is high (design \u00a78 drift formula: minorsBehind/patchesBehind/ageFactor) \u2014 proves drift and pass/fail verdict are independent signals. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng15-vs-ng17-orders-generations-behind",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "15",
+        "path": "angular/apps/ng-15/orders-app"
+      },
+      "library": {
+        "name": "@op/data-grid",
+        "version": "15.1.0",
+        "path": "angular/libraries/lib-ng15/projects/data-grid"
+      },
+      "expectedVerdict": "pass",
+      "expectedFindingClass": "none",
+      "expectedConfidence": "medium",
+      "expectedDrift": "high",
+      "signal": "generations-behind",
+      "notes": "orders-app exists as TWO real, independent app projects \u2014 angular/apps/ng-15/orders-app (this entry) and angular/apps/ng-17/orders-app (see ng17-orders-datagrid-compatible) \u2014 the mid-migration twin, simulating two git branches checked out side by side, each its own production-buildable consumer app. The ng15 copy is mid-migration, not yet cut over; its drift includes the 500x frameworkGenerationsBehind term (design \u00a78) on top of ordinary version drift, even though it still passes. The registry MUST namespace these as two separate angular/15 vs angular/17 entries, never merged. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng15-brownfield-layer0-violation",
+      "app": {
+        "name": "brownfield-app",
+        "framework": "angular",
+        "generation": "15",
+        "path": "angular/apps/ng-15/brownfield-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "15.0.0",
+        "path": "angular/libraries/lib-ng15/projects/core-controls"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "layer0",
+      "expectedConfidence": "unknown",
+      "expectedDrift": "high",
+      "signal": "layer0",
+      "neverGated": true,
+      "notes": "REAL: deliberately least-maintained, standalone consumer app (angular/apps/ng-15/brownfield-app, own package.json/angular.json/node_modules/.npmrc), pinned to core-controls@15.0.0 \u2014 the oldest published version on the ng15 line, several minors behind 15.2.0, real high drift. Contains exactly one deliberate, clearly-commented Layer-0 violation (a hardcoded hex border-color in app.component.scss instead of a semantic theme variable, G15) and has never been run through the gate (neverGated: true). Confirmed live in a real Chrome instance via getComputedStyle: the hardcoded color renders exactly as intended, zero console errors. The static gate must catch the Layer-0 violation; confidence resolves to Unknown (never gated => Unknown, not a number, design \u00a78), not a fabricated score. README.md explicitly marks this app as an intentional bad-citizen fixture, never a reference. Fully real fixture, both halves."
+    },
+    {
+      "id": "ng17-billing-core-controls-accepted-bug",
+      "app": {
+        "name": "billing-app",
+        "framework": "angular",
+        "generation": "17",
+        "path": "angular/apps/ng-17/billing-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "17.2.0",
+        "path": "angular/libraries/lib-ng17/projects/core-controls"
+      },
+      "expectedVerdict": "pass",
+      "expectedFindingClass": "semantic",
+      "expectedConfidence": "high",
+      "expectedDrift": "low",
+      "signal": "accepted-bug-unknown-confidence",
+      "acceptedBug": true,
+      "notes": "REAL underlying defect, but here billing-app-ng17 (angular/apps/ng-17/billing-app, a real, production-buildable consumer app \u2014 ) has a linked accepted-bug waiver for this exact change (design \u00a78: \"accepted bugs count as known & passing\"). Deliberately the SAME candidate version as the unaccepted regression in admin-app-ng17, consumed by a DIFFERENT app with a DIFFERENT waiver state \u2014 proves acceptance is a property of the consuming app's waiver, not the library version itself. The underlying finding is still recorded (findingClass stays 'semantic' \u2014 the diff is real and never hidden), but the WAIVED gate verdict is 'pass' and confidence is NOT depressed (testsPassed + acceptedBugs in the design's confidence formula). Fully real fixture, both halves."
+    },
+    {
+      "id": "core-controls-multiselect-semantic-regression",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "15",
+        "path": "angular/apps/ng-15/orders-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "15.2.0",
+        "path": "angular/libraries/lib-ng15/projects/core-controls"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "semantic",
+      "expectedConfidence": "low",
+      "expectedDrift": "high",
+      "signal": "semantic-regression",
+      "notes": "REAL, verified regression: 15.2.0 switches MultiSelect's optionValue from \"value\" to \"label\" (angular/libraries/lib-ng15/projects/core-controls/src/lib/rv-multi-select). The dropdown still shows the same options and still LOOKS correct, but the emitted selection now carries the display label (e.g. \"Open\") instead of the real value (\"open\") \u2014 a silent data/semantic bug, not a visual one. Confirmed in a real browser: selecting \"Open\" emits \"Open\", not \"open\", with zero console errors. core-controls bundles Button/Input/MultiSelect/Form as ONE published package (a deliberate, accepted divergence from this story's original one-component-per-package AC text), so this is the ng15 line's AC-4-required oracle-listed defect. orders-app-ng15 (angular/apps/ng-15/orders-app) is a real, production-buildable consumer app installing this candidate from Verdaccio, verified end-to-end in a real Chrome instance. Fully real fixture, both halves."
+    },
+    {
+      "id": "data-grid-visual-regression",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "15",
+        "path": "angular/apps/ng-15/orders-app"
+      },
+      "library": {
+        "name": "@op/data-grid",
+        "version": "15.2.0",
+        "path": "angular/libraries/lib-ng15/projects/data-grid"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "visual",
+      "expectedConfidence": "low",
+      "expectedDrift": "high",
+      "signal": "visual-regression",
+      "notes": "REAL, verified regression: 15.2.0 wraps the AG Grid in a container div with non-zero padding (angular/libraries/lib-ng15/projects/data-grid/src/lib/data-grid.component.ts) \u2014 15.0.0/15.1.0 had no wrapper at all, so this is a genuine, unexpected shift in the grid's visual bounds (the AC's own suggested example defect class), still Layer-0 clean (a var() reference, never a hardcoded literal). Confirmed in a real browser: wrapper padding is 16px where there was none before, zero console errors. orders-app-ng15 (angular/apps/ng-15/orders-app) is a real, production-buildable consumer app installing this candidate from Verdaccio. Fully real fixture, both halves."
+    },
+    {
+      "id": "core-controls-peer-dep-break-ng17",
+      "app": {
+        "name": "orders-app",
+        "framework": "angular",
+        "generation": "17",
+        "path": "angular/apps/ng-17/orders-app"
+      },
+      "library": {
+        "name": "@op/core-controls",
+        "version": "17.2.0",
+        "path": "angular/libraries/lib-ng17/projects/core-controls"
+      },
+      "expectedVerdict": "fail",
+      "expectedFindingClass": "build",
+      "expectedConfidence": "zero",
+      "expectedDrift": "high",
+      "signal": "build-peer-dep-break",
+      "notes": "REAL, verified build/peer-dep break: 17.2.0 bumps core-controls's @angular/core (and @angular/common, @angular/forms) peerDependency to ^18.0.0, while orders-app-ng17 (angular/apps/ng-17/orders-app, a real, production-buildable consumer app) stays pinned to @angular/core 17.3.12. Verified for real, not just declared: packed the published 17.2.0 tarball and installed it against a throwaway package.json pinned to @angular/core 17.3.12 \u2014 npm's strict peer-dep resolution hard-failed with a real ERESOLVE error (not a warning). The app will not even install/build against the candidate -> confidence MUST be exactly 0 (design \u00a78), reported as a finding, never a crash (G10). Same candidate version ALSO carries the real multiselect semantic regression (see ng17-admin-multiselect-semantic-regression) \u2014 a consumer who can't even install it never gets far enough to see that bug. Fully real fixture, both halves."
+    },
+    {
+      "id": "react19-orders-core-controls-compatible",
+      "app": {
+        "name": "orders-app",
+        "framework": "react",
+        "generation": "19",
+        "path": "react/apps/r-19/orders-app"
+      },
+      "library": {
+        "name": "@op/react-core-controls",
+        "version": "19.1.0",
+        "path": "react/libraries/lib-r19/core-controls"
+      },
+      "expectedVerdict": "pass",
+      "expectedFindingClass": "none",
+      "expectedConfidence": "high",
+      "expectedDrift": "none",
+      "signal": "drift-only",
+      "notes": "REAL: 19.1.0 adds RippleViewButton's variant prop, purely additive (defaults 'primary', byte-identical render to 19.0.0). Built, tagged, and published to Verdaccio against the real React 19.2.7/PrimeReact 10.9.3 toolchain. orders-app (react/apps/r-19/orders-app) is a real, production-buildable, fully standalone consumer app installing this from Verdaccio, verified end-to-end in a real Chrome instance \u2014 MultiSelect filtering its order list, Button refresh action. Mirrors ng17-orders-datagrid-compatible's role on the Angular side: proves no false positive on a safe upgrade, cross-framework. Fully real fixture, both halves."
+    }
+  ]
+}

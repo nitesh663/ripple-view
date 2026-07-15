@@ -1,0 +1,12 @@
+<div class="occ-titlebar">
+  <span class="occ-titlebar__text">{{ title | translate }}</span>
+  <button
+    *ngIf="showClose"
+    type="button"
+    class="occ-titlebar__close"
+    [attr.aria-label]="'common.close' | translate"
+    (click)="closed.emit()"
+  >
+    <i class="pi pi-times"></i>
+  </button>
+</div>

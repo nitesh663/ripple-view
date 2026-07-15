@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.pg-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #ddd;
+}
+
+.pg-body {
+  display: flex;
+}
+
+.pg-sidebar {
+  width: 220px;
+  border-right: 1px solid #ddd;
+  padding: 16px;
+}
+
+.pg-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pg-nav-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pg-nav-item--active {
+  background: #e0eefe;
+  font-weight: 600;
+}
+
+.pg-demo-area {
+  flex: 1;
+  padding: 24px;
+}
+
+.pg-demo-row {
+  display: flex;
+  gap: 12px;
+}
+
+.pg-log {
+  margin-top: 12px;
+}
+
+.rv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  max-width: 320px;
+}
+
+.rv-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 320px;
+}

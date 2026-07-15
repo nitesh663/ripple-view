@@ -1,0 +1,39 @@
+<op-cc-floating-label
+  #fl
+  [label]="label"
+  [isMandatory]="isMandatory"
+  [tooltip]="tooltip"
+  [floating]="floating"
+  [floatingClass]="floatingClass"
+  [labelFor]="id"
+>
+  <div class="op-cc-datepicker" [ngClass]="[sizeClass, customClass]">
+    <p-calendar
+      [formControl]="control"
+      [ariaLabelledBy]="label ? fl.labelId : ''"
+      [dateFormat]="dateFormat"
+      [selectionMode]="selectionMode"
+      [showTime]="showTime"
+      [minDate]="$any(minDate)"
+      [maxDate]="$any(maxDate)"
+      [showIcon]="showIcon"
+      [readonlyInput]="readonly"
+      [placeholder]="placeholder | translate"
+      [appendTo]="appendTo"
+      (onSelect)="onSelect($event)"
+      (onBlur)="onCalendarBlur($event)"
+      (onClickOutside)="onCalendarBlur($event)"
+    ></p-calendar>
+
+    <i
+      *ngIf="hasValue() && !readonly && !disabled"
+      class="pi pi-times op-cc-clear-icon"
+      role="button"
+      tabindex="0"
+      [attr.aria-label]="'Clear' | translate"
+      (click)="onClearClick($event)"
+      (keyup.enter)="onClearClick($event)"
+      (keyup.space)="onClearClick($event)"
+    ></i>
+  </div>
+</op-cc-floating-label>

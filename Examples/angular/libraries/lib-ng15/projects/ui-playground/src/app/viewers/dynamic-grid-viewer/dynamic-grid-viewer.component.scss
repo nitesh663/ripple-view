@@ -1,0 +1,51 @@
+.dyn-grid-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__desc {
+    margin: 0;
+    color: #6b7280;
+    max-width: 70ch;
+  }
+
+  &__toggles {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+  }
+
+  &__grid {
+    height: 440px;
+    width: 100%;
+  }
+
+  &__event {
+    padding: 0.5rem 0.75rem;
+    background: #eef2ff;
+    border-radius: 4px;
+    font-size: 0.875rem;
+  }
+
+  &__meta {
+    font-size: 0.8125rem;
+
+    pre {
+      background: #f8f9fa;
+      padding: 0.75rem;
+      border-radius: 4px;
+      overflow: auto;
+      max-height: 260px;
+    }
+  }
+}

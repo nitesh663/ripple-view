@@ -1,0 +1,65 @@
+<div class="op-viewer">
+  <h2 class="op-viewer__heading"><i class="pi pi-list"></i> {{ 'NAV.MULTISELECT' | translate }}</h2>
+
+  <div class="op-viewer__grid">
+    <section class="op-panel op-viewer__preview">
+      <h3 class="op-section-title">{{ 'COMMON.PREVIEW' | translate }}</h3>
+      <op-cc-multiselect-dropdown
+        [control]="control"
+        [options]="options"
+        [label]="label"
+        [placeholder]="placeholder"
+        [display]="display"
+        [filter]="filter"
+        [showToggleAll]="showToggleAll"
+        [showHeader]="showHeader"
+        [disabled]="disabled"
+        [isMandatory]="isMandatory"
+        [floating]="floating"
+      ></op-cc-multiselect-dropdown>
+
+      <div class="op-viewer__value">
+        <strong>{{ 'COMMON.VALUE' | translate }}:</strong>
+        <code>{{ control.value | json }}</code>
+      </div>
+    </section>
+
+    <section class="op-panel op-viewer__props">
+      <h3 class="op-section-title">{{ 'COMMON.PROPERTIES' | translate }}</h3>
+
+      <label class="op-field">
+        <span>{{ 'COMMON.LABEL' | translate }}</span>
+        <input type="text" [(ngModel)]="label" />
+      </label>
+      <label class="op-field">
+        <span>Display</span>
+        <select [(ngModel)]="display">
+          <option value="comma">comma</option>
+          <option value="chip">chip</option>
+        </select>
+      </label>
+
+      <label class="op-check"><input type="checkbox" [(ngModel)]="filter" /> Filter</label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="showToggleAll" /> Show toggle all
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="showHeader" /> Show header
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="disabled" /> {{ 'COMMON.DISABLED' | translate }}
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="isMandatory" /> {{ 'COMMON.MANDATORY' | translate }}
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="floating" /> {{ 'COMMON.FLOATING' | translate }}
+      </label>
+    </section>
+  </div>
+
+  <section class="op-panel">
+    <h3 class="op-section-title">{{ 'COMMON.CODE' | translate }}</h3>
+    <app-code-snippet [code]="snippet" language="html"></app-code-snippet>
+  </section>
+</div>

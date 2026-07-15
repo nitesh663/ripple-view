@@ -1,0 +1,17 @@
+<nav class="op-sidebar">
+  <div class="op-sidebar__category" *ngFor="let category of categories">
+    <div class="op-sidebar__category-title">{{ category.labelKey | translate }}</div>
+    <ul class="op-sidebar__list">
+      <li *ngFor="let item of category.items">
+        <a
+          class="op-sidebar__link"
+          [routerLink]="item.route"
+          routerLinkActive="op-sidebar__link--active"
+        >
+          <i [class]="item.icon"></i>
+          <span>{{ item.labelKey | translate }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,64 @@
+<div class="op-viewer">
+  <h2 class="op-viewer__heading"><i class="pi pi-pencil"></i> {{ 'NAV.INPUT' | translate }}</h2>
+
+  <div class="op-viewer__grid">
+    <section class="op-panel op-viewer__preview">
+      <h3 class="op-section-title">{{ 'COMMON.PREVIEW' | translate }}</h3>
+      <op-cc-input
+        [control]="control"
+        [label]="label"
+        [placeholder]="placeholder"
+        [type]="type"
+        [maxLength]="maxLength"
+        [readonly]="readonly"
+        [disabled]="disabled"
+        [isMandatory]="isMandatory"
+        [floating]="floating"
+      ></op-cc-input>
+
+      <div class="op-viewer__value">
+        <strong>{{ 'COMMON.VALUE' | translate }}:</strong>
+        <code>{{ control.value | json }}</code>
+      </div>
+    </section>
+
+    <section class="op-panel op-viewer__props">
+      <h3 class="op-section-title">{{ 'COMMON.PROPERTIES' | translate }}</h3>
+
+      <label class="op-field">
+        <span>{{ 'COMMON.LABEL' | translate }}</span>
+        <input type="text" [(ngModel)]="label" />
+      </label>
+      <label class="op-field">
+        <span>{{ 'COMMON.PLACEHOLDER' | translate }}</span>
+        <input type="text" [(ngModel)]="placeholder" />
+      </label>
+      <label class="op-field">
+        <span>Type</span>
+        <input type="text" [(ngModel)]="type" />
+      </label>
+      <label class="op-field">
+        <span>Max length</span>
+        <input type="number" [(ngModel)]="maxLength" />
+      </label>
+
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="disabled" /> {{ 'COMMON.DISABLED' | translate }}
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="isMandatory" /> {{ 'COMMON.MANDATORY' | translate }}
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="floating" /> {{ 'COMMON.FLOATING' | translate }}
+      </label>
+      <label class="op-check">
+        <input type="checkbox" [(ngModel)]="readonly" /> {{ 'COMMON.READONLY' | translate }}
+      </label>
+    </section>
+  </div>
+
+  <section class="op-panel">
+    <h3 class="op-section-title">{{ 'COMMON.CODE' | translate }}</h3>
+    <app-code-snippet [code]="snippet" language="html"></app-code-snippet>
+  </section>
+</div>

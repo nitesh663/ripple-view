@@ -1,0 +1,18 @@
+<div class="product-shell">
+  <div class="product-shell__tabs" role="tablist" aria-label="Product sections">
+    <button
+      *ngFor="let tab of tabs"
+      role="tab"
+      [attr.aria-selected]="activeTab === tab.id"
+      [class.product-shell__tab--active]="activeTab === tab.id"
+      class="product-shell__tab"
+      (click)="selectTab(tab.id)">
+      {{ tab.label }}
+    </button>
+  </div>
+
+  <div class="product-shell__content" role="tabpanel">
+    <app-product-grid *ngIf="activeTab === 'product'"></app-product-grid>
+    <app-package *ngIf="activeTab === 'package'"></app-package>
+  </div>
+</div>

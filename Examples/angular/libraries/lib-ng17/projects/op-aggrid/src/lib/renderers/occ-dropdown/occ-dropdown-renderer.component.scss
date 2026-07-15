@@ -1,0 +1,9 @@
+.occ-dropdown-renderer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  ::ng-deep op-cc-dropdown {
+    width: 100%;
+  }
+}

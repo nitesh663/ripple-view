@@ -1,0 +1,444 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "commonservices": {
+      "projectType": "library",
+      "root": "projects/commonservices",
+      "sourceRoot": "projects/commonservices/src",
+      "prefix": "op",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/commonservices/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/commonservices/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/commonservices/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/commonservices/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/commonservices/**/*.ts",
+              "projects/commonservices/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "op-i18n": {
+      "projectType": "library",
+      "root": "projects/op-i18n",
+      "sourceRoot": "projects/op-i18n/src",
+      "prefix": "op",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/op-i18n/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/op-i18n/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/op-i18n/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/op-i18n/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/op-i18n/**/*.ts", "projects/op-i18n/**/*.html"]
+          }
+        }
+      }
+    },
+    "op-core-controls": {
+      "projectType": "library",
+      "root": "projects/op-core-controls",
+      "sourceRoot": "projects/op-core-controls/src",
+      "prefix": "op",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/op-core-controls/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/op-core-controls/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/op-core-controls/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/op-core-controls/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/op-core-controls/**/*.ts",
+              "projects/op-core-controls/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "ui-playground": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "projects/ui-playground",
+      "sourceRoot": "projects/ui-playground/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/ui-playground",
+            "index": "projects/ui-playground/src/index.html",
+            "browser": "projects/ui-playground/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/ui-playground/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ui-playground/src/favicon.ico",
+              "projects/ui-playground/src/assets"
+            ],
+            "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@ag-grid-community/styles/ag-theme-alpine.css",
+              "node_modules/@ag-grid-community/styles/ag-grid.css",
+              "projects/ui-playground/src/styles.scss"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": ["lodash", "lodash/isEqual"]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "projects/ui-playground/src/environments/environment.ts",
+                  "with": "projects/ui-playground/src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ui-playground:build:production"
+            },
+            "development": {
+              "buildTarget": "ui-playground:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "ui-playground:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/ui-playground/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ui-playground/src/favicon.ico",
+              "projects/ui-playground/src/assets"
+            ],
+            "styles": ["projects/ui-playground/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ui-playground/**/*.ts",
+              "projects/ui-playground/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "ui-playground-2": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "projects/ui-playground-2",
+      "sourceRoot": "projects/ui-playground-2/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/ui-playground-2",
+            "index": "projects/ui-playground-2/src/index.html",
+            "browser": "projects/ui-playground-2/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/ui-playground-2/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ui-playground-2/src/favicon.ico",
+              "projects/ui-playground-2/src/assets"
+            ],
+            "styles": [
+              "node_modules/@ag-grid-community/styles/ag-theme-alpine.css",
+              "node_modules/@ag-grid-community/styles/ag-grid.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/ui-playground-2/.storybook/styles.scss",
+              "projects/ui-playground-2/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "ui-playground-2:build:production"
+            },
+            "development": {
+              "buildTarget": "ui-playground-2:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "ui-playground-2:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/ui-playground-2/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ui-playground-2/src/favicon.ico",
+              "projects/ui-playground-2/src/assets"
+            ],
+            "styles": ["projects/ui-playground-2/src/styles.scss"],
+            "scripts": []
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/ui-playground-2/.storybook",
+            "browserTarget": "ui-playground-2:build",
+            "compodoc": false,
+            "port": 6006,
+            "tsConfig": "projects/ui-playground-2/.storybook/tsconfig.json"
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/ui-playground-2/.storybook",
+            "browserTarget": "ui-playground-2:build",
+            "compodoc": false,
+            "outputDir": "dist/storybook",
+            "tsConfig": "projects/ui-playground-2/.storybook/tsconfig.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ui-playground-2/**/*.ts",
+              "projects/ui-playground-2/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "op-aggrid": {
+      "projectType": "library",
+      "root": "projects/op-aggrid",
+      "sourceRoot": "projects/op-aggrid/src",
+      "prefix": "op",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/op-aggrid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/op-aggrid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/op-aggrid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/op-aggrid/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "karmaConfig": "projects/op-aggrid/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/op-aggrid/**/*.ts", "projects/op-aggrid/**/*.html"]
+          }
+        }
+      }
+    },
+    "op-dynamic": {
+      "projectType": "library",
+      "root": "projects/op-dynamic",
+      "sourceRoot": "projects/op-dynamic/src",
+      "prefix": "op",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/op-dynamic/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/op-dynamic/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/op-dynamic/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/op-dynamic/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "karmaConfig": "projects/op-dynamic/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/op-dynamic/**/*.ts", "projects/op-dynamic/**/*.html"]
+          }
+        }
+      }
+    }
+  }
+}

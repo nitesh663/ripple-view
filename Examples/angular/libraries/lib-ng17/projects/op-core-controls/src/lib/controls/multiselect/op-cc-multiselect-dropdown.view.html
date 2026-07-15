@@ -1,0 +1,32 @@
+<op-cc-floating-label
+  [label]="label"
+  [isMandatory]="isMandatory"
+  [tooltip]="tooltip"
+  [floating]="floating"
+  [floatingClass]="floatingClass"
+  [labelFor]="id"
+>
+  <div class="op-cc-multiselect" [ngClass]="[sizeClass, customClass]">
+    <p-multiSelect
+      [formControl]="control"
+      [options]="options"
+      optionLabel="label"
+      optionValue="value"
+      [placeholder]="placeholder | translate"
+      [showToggleAll]="showToggleAll"
+      [showHeader]="showHeader"
+      [filter]="filter"
+      [maxSelectedLabels]="maxSelectedLabels"
+      [display]="display"
+      [readonly]="readonly"
+      [appendTo]="appendTo"
+      (onChange)="onSelectionChange($event)"
+      (onPanelHide)="onPanelHide($event)"
+      opDropDownKeyboardSupport
+    >
+      <ng-template *ngIf="itemTemplate" let-item pTemplate="item">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"></ng-container>
+      </ng-template>
+    </p-multiSelect>
+  </div>
+</op-cc-floating-label>

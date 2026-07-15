@@ -1,0 +1,46 @@
+.op-cc-floating-label {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  .op-cc-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--text-color-secondary, #6c757d);
+  }
+
+  .op-cc-mandatory {
+    color: var(--red-500, #ef4444);
+    font-weight: 700;
+  }
+
+  .op-cc-tooltip-icon {
+    cursor: help;
+    font-size: 0.8rem;
+  }
+
+  // Floating label: label sits on top of the field and lifts on focus/fill.
+  &.op-cc-floating {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .op-cc-label {
+      order: 1;
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      margin: 0;
+      pointer-events: none;
+      transition: all 0.15s ease;
+      background: var(--surface-card, #fff);
+      padding: 0 0.25rem;
+    }
+
+    &.op-float-sm .op-cc-label {
+      font-size: 0.75rem;
+    }
+  }
+}

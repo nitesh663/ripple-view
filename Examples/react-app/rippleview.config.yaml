@@ -1,0 +1,15 @@
+app: react-app
+department: rippleview-examples           # dashboard label only (G6)
+baseUrl: "http://localhost:4173"     # vite preview port — replace with nginx URL in CI (G9)
+hooks:
+  auth: "./hooks/auth.ts"            # no-op until auth is wired (G1)
+  seed: "./hooks/seed.ts"
+  teardown: "./hooks/teardown.ts"
+matrix:
+  viewports:
+    - { width: 1280, height: 720, label: desktop }
+    - { width: 375, height: 812, label: mobile }
+  themes:
+    - default
+  locales:
+    - en-US
