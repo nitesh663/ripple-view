@@ -1,0 +1,30 @@
+{
+  "name": "@rippleview/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "yaml": "^2.7.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7"
+  }
+}

@@ -1,0 +1,72 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:20-alpine'
+            args '--user root'
+        }
+    }
+
+    options {
+        timeout(time: 20, unit: 'MINUTES')
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Install') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+
+        stage('Typecheck') {
+            steps {
+                sh 'npm run typecheck'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Build Runner Image') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh """
+                    docker build \\
+                        -t rv-runner:${BUILD_NUMBER} \\
+                        -t rv-runner:latest \\
+                        -f docker/rv-runner/Dockerfile \\
+                        .
+                """
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline passed.'
+        }
+        failure {
+            echo 'Pipeline failed — PR will be blocked.'
+        }
+    }
+}

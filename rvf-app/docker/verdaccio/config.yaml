@@ -1,0 +1,20 @@
+# verdaccio config — ephemeral private registry for version-swap testing ()
+# Intentionally permissive (publish/unpublish open to **): this instance is
+# throwaway and torn down per test run, never exposed beyond the isolation
+# pipeline, so there is no production-pollution risk to guard against.
+
+storage: /verdaccio/storage/data
+
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+
+packages:
+  '**':
+    access: $all
+    publish: $all
+    unpublish: $all
+    proxy: npmjs
+
+logs:
+  - { type: stdout, format: pretty, level: warn }

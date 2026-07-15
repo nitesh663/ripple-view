@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Test / coverage / reports
+coverage/
+.nyc_output/
+allure-results/
+allure-report/
+test-results/
+playwright-report/
+
+# RippleView local run artifacts (Mongo-shaped JSON, baselines)
+.rv/
+results/
+baselines/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+.npmrc.local
+
+# Editor / OS
+.DS_Store
+*.log
+.idea/
+*.swp

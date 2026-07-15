@@ -1,0 +1,55 @@
+{
+  "name": "rv",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "preflight": "node scripts/preflight.mjs",
+    "prepare": "husky",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "eslint. && npm run lint --workspaces --if-present",
+    "format": "prettier --write. && npm run format --workspaces --if-present",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "changeset publish"
+  },
+  "lint-staged": {
+    "*.{ts,mts,mjs,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yaml,yml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
+    "@eslint/js": "^9.0.0",
+    "@microsoft/api-extractor": "^7.58.9",
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^14.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "prettier": "^3.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0",
+    "yaml": "^2.7.0"
+  },
+  "overrides": {
+    "eslint-visitor-keys": "^4.2.1"
+  }
+}

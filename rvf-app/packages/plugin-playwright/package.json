@@ -1,0 +1,26 @@
+{
+  "name": "@rippleview/plugin-playwright",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "playwright": "^1.48.0",
+    "@rippleview/core": "*"
+  }
+}
