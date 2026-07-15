@@ -1,0 +1,21 @@
+<div class="occ-saved-filters">
+  <occ-require-info *ngIf="!savedFilters.length" message="grid.filter.noSaved"></occ-require-info>
+
+  <ul *ngIf="savedFilters.length" class="occ-saved-filters__list">
+    <li *ngFor="let filter of savedFilters; trackBy: trackById" class="occ-saved-filters__item">
+      <button type="button" class="occ-saved-filters__apply" (click)="applyFilter.emit(filter)">
+        <i *ngIf="filter.isDefault" class="pi pi-star-fill"></i>
+        {{ filter.name }}
+      </button>
+      <button
+        type="button"
+        class="occ-saved-filters__delete"
+        [disabled]="filter.systemDefined"
+        [attr.aria-label]="'common.delete' | translate"
+        (click)="deleteFilter.emit(filter)"
+      >
+        <i class="pi pi-trash"></i>
+      </button>
+    </li>
+  </ul>
+</div>

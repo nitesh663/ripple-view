@@ -1,0 +1,65 @@
+{
+  "APP": {
+    "TITLE": "OP UI Playground",
+    "SUBTITLE": "Live demo of @op/core-controls"
+  },
+  "NAV": {
+    "CORE_CONTROLS": "Core Controls",
+    "DROPDOWN": "Dropdown",
+    "INPUT": "Input",
+    "DATEPICKER": "Date Picker",
+    "MULTISELECT": "Multi-Select",
+    "DATA_GRID": "Data Grid",
+    "GRID": "AG Grid",
+    "DYNAMIC_GRID": "Dynamic Grid"
+  },
+  "grid": {
+    "quickFilter": "Quick filter…",
+    "filter": {
+      "title": "Filters",
+      "apply": "Apply",
+      "clearAll": "Clear all",
+      "save": "Save",
+      "savedFilters": "Saved filters",
+      "noSaved": "No saved filters yet",
+      "configName": "Configuration name",
+      "configNamePlaceholder": "e.g. My open orders",
+      "markDefault": "Set as default"
+    }
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "COMMON": {
+    "PROPERTIES": "Properties",
+    "PREVIEW": "Preview",
+    "CODE": "Code",
+    "COPY": "Copy",
+    "COPIED": "Copied!",
+    "VALUE": "Current value",
+    "LABEL": "Label",
+    "PLACEHOLDER": "Placeholder",
+    "DISABLED": "Disabled",
+    "MANDATORY": "Mandatory",
+    "FLOATING": "Floating label",
+    "READONLY": "Read only"
+  },
+  "DROPDOWN": {
+    "LABEL": "Country",
+    "PLACEHOLDER": "Select a country"
+  },
+  "INPUT": {
+    "LABEL": "Full name",
+    "PLACEHOLDER": "Enter your name"
+  },
+  "DATEPICKER": {
+    "LABEL": "Date of birth",
+    "PLACEHOLDER": "Pick a date"
+  },
+  "MULTISELECT": {
+    "LABEL": "Skills",
+    "PLACEHOLDER": "Select skills"
+  }
+}

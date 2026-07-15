@@ -1,0 +1,12 @@
+app: orders-app
+department: demo-fixture-suite
+baseUrl: "http://localhost:4410"
+hooks: {}
+build:
+  node: "20"
+  command: "npm run build"
+  outputDir: "dist"
+  serve: static
+matrix:
+  - browser: chromium
+    viewport: { width: 1280, height: 720 }

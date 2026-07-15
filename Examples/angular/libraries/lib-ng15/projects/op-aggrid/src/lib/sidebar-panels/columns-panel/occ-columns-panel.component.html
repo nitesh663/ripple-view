@@ -1,0 +1,9 @@
+<div class="occ-columns-panel">
+  <label
+    *ngFor="let column of columns; trackBy: trackByColId"
+    class="occ-columns-panel__row"
+  >
+    <input type="checkbox" [checked]="isVisible(column)" (change)="toggle(column, $event)" />
+    <span>{{ headerName(column) }}</span>
+  </label>
+</div>

@@ -1,0 +1,4 @@
+// Shared SCSS variables for @op/dynamic components.
+// The dynamic layer mostly delegates styling to @op/aggrid's occ-aggrid.
+
+$op-dynamic-gap: var(--op-dynamic-gap, 0.5rem);

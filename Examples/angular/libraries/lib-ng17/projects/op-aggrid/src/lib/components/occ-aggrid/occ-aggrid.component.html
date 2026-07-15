@@ -1,0 +1,28 @@
+<div class="occ-aggrid-wrapper">
+  <div *ngIf="needQuickFilter" class="occ-aggrid-quickfilter">
+    <input
+      pInputText
+      type="text"
+      [placeholder]="'grid.quickFilter' | translate"
+      [value]="quickFilterText"
+      (input)="applyQuickFilter($any($event.target).value)"
+    />
+  </div>
+
+  <ag-grid-angular
+    class="ag-theme-alpine occ-aggrid-grid"
+    [columnDefs]="$any(columnDefs)"
+    [rowData]="rowData"
+    [gridOptions]="mergedGridOptions"
+    (gridReady)="onGridReady($event)"
+    (rowSelected)="onRowSelected($event)"
+    (selectionChanged)="onSelectionChanged($event)"
+    (sortChanged)="onSortChanged($event)"
+    (columnMoved)="onColumnMoved($event)"
+    (columnResized)="onColumnResized($event)"
+    (columnVisible)="onColumnVisible($event)"
+    (cellValueChanged)="onCellValueChanged($event)"
+    (cellClicked)="onCellClicked($event)"
+    (filterChanged)="onFilterChanged($event)"
+  ></ag-grid-angular>
+</div>

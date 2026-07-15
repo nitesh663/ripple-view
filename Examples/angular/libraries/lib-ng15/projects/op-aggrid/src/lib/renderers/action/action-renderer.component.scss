@@ -1,0 +1,19 @@
+.occ-action-renderer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 100%;
+}
+
+.occ-action-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  color: inherit;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}

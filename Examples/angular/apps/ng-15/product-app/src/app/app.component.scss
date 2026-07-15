@@ -1,0 +1,41 @@
+.product-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__tabs {
+    display: flex;
+    border-bottom: 2px solid #e0e0e0;
+    background: #fff;
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+
+  &__tab {
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover { color: #1565c0; }
+
+    &--active {
+      color: #1565c0;
+      border-bottom-color: #1565c0;
+      font-weight: 600;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+}

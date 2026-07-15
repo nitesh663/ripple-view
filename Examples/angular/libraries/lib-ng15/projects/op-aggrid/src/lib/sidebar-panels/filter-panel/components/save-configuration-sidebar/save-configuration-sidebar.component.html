@@ -1,0 +1,26 @@
+<form class="occ-save-config" (ngSubmit)="onSubmit()">
+  <label class="occ-save-config__label">
+    {{ 'grid.filter.configName' | translate }}
+    <input
+      pInputText
+      type="text"
+      name="configName"
+      [(ngModel)]="name"
+      [placeholder]="'grid.filter.configNamePlaceholder' | translate"
+    />
+  </label>
+
+  <label class="occ-save-config__checkbox">
+    <input type="checkbox" name="isDefault" [(ngModel)]="isDefault" />
+    {{ 'grid.filter.markDefault' | translate }}
+  </label>
+
+  <div class="occ-save-config__actions">
+    <button type="button" class="occ-btn occ-btn--ghost" (click)="cancel.emit()">
+      {{ 'common.cancel' | translate }}
+    </button>
+    <button type="submit" class="occ-btn occ-btn--primary" [disabled]="!canSave">
+      {{ 'grid.filter.save' | translate }}
+    </button>
+  </div>
+</form>

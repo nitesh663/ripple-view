@@ -1,0 +1,9 @@
+version: '1'
+name: rv-common-app-ng17
+
+packages:
+  - '@op/core-controls'
+  - '@op/aggrid'
+  - '@op/dynamic'
+  - '@op/i18n'
+  - '@op/commonservices'

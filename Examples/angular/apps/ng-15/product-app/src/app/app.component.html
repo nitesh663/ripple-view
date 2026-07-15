@@ -1,0 +1,20 @@
+<div class="product-app">
+  <app-topbar appName="Product"></app-topbar>
+
+  <div class="product-app__tabs" role="tablist" aria-label="Product sections">
+    <button
+      *ngFor="let tab of tabs"
+      role="tab"
+      [attr.aria-selected]="activeTab === tab.id"
+      [class.product-app__tab--active]="activeTab === tab.id"
+      class="product-app__tab"
+      (click)="selectTab(tab.id)">
+      {{ tab.label }}
+    </button>
+  </div>
+
+  <main class="product-app__content" role="tabpanel">
+    <app-product *ngIf="activeTab === 'product'"></app-product>
+    <app-package *ngIf="activeTab === 'package'"></app-package>
+  </main>
+</div>

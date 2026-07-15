@@ -1,0 +1,19 @@
+/** Prettier config for the @op workspace. */
+module.exports = {
+  printWidth: 100,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  quoteProps: 'as-needed',
+  trailingComma: 'all',
+  bracketSpacing: true,
+  arrowParens: 'always',
+  endOfLine: 'lf',
+  overrides: [
+    {
+      files: '*.html',
+      options: { parser: 'angular' },
+    },
+  ],
+};

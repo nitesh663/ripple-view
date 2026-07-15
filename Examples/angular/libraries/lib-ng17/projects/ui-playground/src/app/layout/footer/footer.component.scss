@@ -1,0 +1,10 @@
+.op-footer {
+  height: var(--op-footer-height, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: var(--text-color-secondary, #6c757d);
+  background: var(--surface-card, #fff);
+  border-top: 1px solid var(--surface-border, #dee2e6);
+}

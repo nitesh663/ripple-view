@@ -1,0 +1,18 @@
+<div
+  class="op-cc-floating-label"
+  [class.op-cc-floating]="floating"
+  [ngClass]="floating ? floatingClass : ''"
+>
+  <ng-content></ng-content>
+
+  <label *ngIf="label" class="op-cc-label" [id]="labelId" [attr.for]="labelFor || null">
+    {{ label | translate }}
+    <span *ngIf="isMandatory" class="op-cc-mandatory" aria-hidden="true">*</span>
+    <i
+      *ngIf="tooltip"
+      class="pi pi-info-circle op-cc-tooltip-icon"
+      [pTooltip]="tooltip | translate"
+      tooltipPosition="top"
+    ></i>
+  </label>
+</div>

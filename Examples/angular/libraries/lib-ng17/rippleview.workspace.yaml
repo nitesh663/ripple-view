@@ -1,0 +1,9 @@
+version: '1'
+name: ng17-libraries
+
+packages:
+  - '@op/core-controls'
+  - '@op/aggrid'
+  - '@op/dynamic'
+  - '@op/i18n'
+  - '@op/commonservices'

@@ -1,0 +1,30 @@
+.op-header {
+  height: var(--op-header-height, 56px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  background: var(--primary-color, #1d4ed8);
+  color: var(--primary-color-text, #fff);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__logo {
+    font-size: 1.25rem;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  &__subtitle {
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+}

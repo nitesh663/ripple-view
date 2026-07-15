@@ -1,0 +1,8 @@
+.op-cc-multiselect {
+  display: block;
+  width: 100%;
+
+  ::ng-deep .p-multiselect {
+    width: 100%;
+  }
+}

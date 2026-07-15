@@ -1,0 +1,7 @@
+// Shared SCSS variables for @op/aggrid components.
+// Kept minimal; component styles import these via styleIncludePaths.
+
+$op-grid-header-bg: var(--op-grid-header-bg, #f5f7fa);
+$op-grid-border: var(--op-grid-border, #e0e0e0);
+$op-grid-accent: var(--op-grid-accent, #2962ff);
+$op-grid-sidebar-width: var(--op-grid-sidebar-width, 320px);

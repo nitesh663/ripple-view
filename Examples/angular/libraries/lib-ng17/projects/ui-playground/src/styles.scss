@@ -1,0 +1,56 @@
+/* Global styles for the ui-playground demo app.
+   PrimeNG theme, primeng base, primeicons and bootstrap are loaded via
+   angular.json "styles"; this file holds app-level layout + custom tweaks. */
+
+:root {
+  --op-header-height: 56px;
+  --op-footer-height: 40px;
+  --op-sidebar-width: 260px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-family, 'Inter', 'Segoe UI', Roboto, sans-serif);
+  background: var(--surface-ground, #f8f9fa);
+  color: var(--text-color, #495057);
+}
+
+.op-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.op-app__body {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.op-app__content {
+  flex: 1 1 auto;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+}
+
+/* Utility: a card-ish panel */
+.op-panel {
+  background: var(--surface-card, #fff);
+  border: 1px solid var(--surface-border, #dee2e6);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.op-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--text-color, #343a40);
+}

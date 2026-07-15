@@ -1,0 +1,57 @@
+<op-cc-floating-label
+  [label]="label"
+  [isMandatory]="isMandatory"
+  [tooltip]="tooltip"
+  [floating]="floating"
+  [floatingClass]="floatingClass"
+  [labelFor]="id"
+>
+  <div class="op-cc-dropdown" [ngClass]="[sizeClass, customClass]">
+    <p-dropdown
+      [formControl]="control"
+      [options]="options"
+      optionLabel="label"
+      optionValue="value"
+      [ariaLabel]="label ? (label | translate) : null"
+      [placeholder]="placeholder | translate"
+      [editable]="editable"
+      [filter]="filter"
+      [showClear]="showClear"
+      [readonly]="readonly"
+      [appendTo]="appendTo"
+      [autoDisplayFirst]="false"
+      (onChange)="doChange($event)"
+      (onClick)="onClick($event)"
+      (onHide)="onDropdownHide($event)"
+      opDropDownKeyboardSupport
+    >
+      <ng-template *ngIf="selectedItemTemplate" let-selected pTemplate="selectedItem">
+        <ng-container
+          *ngTemplateOutlet="selectedItemTemplate; context: { $implicit: selected }"
+        ></ng-container>
+      </ng-template>
+
+      <ng-template let-item pTemplate="item">
+        <ng-container *ngIf="itemTemplate; else defaultItem">
+          <ng-container
+            *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"
+          ></ng-container>
+        </ng-container>
+        <ng-template #defaultItem>
+          <span>{{ item.label | translate }}</span>
+        </ng-template>
+      </ng-template>
+    </p-dropdown>
+
+    <i
+      *ngIf="hasValue() && !showClear && !readonly && !disabled"
+      class="pi pi-times op-cc-clear-icon"
+      role="button"
+      tabindex="0"
+      [attr.aria-label]="'Clear' | translate"
+      (click)="onClearClick($event)"
+      (keyup.enter)="onClearClick($event)"
+      (keyup.space)="onClearClick($event)"
+    ></i>
+  </div>
+</op-cc-floating-label>

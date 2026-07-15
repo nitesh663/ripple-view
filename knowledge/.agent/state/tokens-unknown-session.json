@@ -1,0 +1,13 @@
+{
+  "session_id":       "unknown-session",
+  "jira_key":         "",
+  "model":            "claude-sonnet-4-6",
+  "total_in":         0,
+  "total_out":        0,
+  "total_cache_read": 0,
+  "total_cache_write":0,
+  "total":            0,
+  "calls":            1,
+  "last_tool":        "unknown",
+  "last_updated":     "2026-06-25T07:01:53Z"
+}

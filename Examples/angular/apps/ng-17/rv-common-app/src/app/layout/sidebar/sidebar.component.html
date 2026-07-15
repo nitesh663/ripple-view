@@ -1,0 +1,14 @@
+<nav class="sidebar" role="navigation" aria-label="Main navigation">
+  <ul class="sidebar__nav" role="list">
+    <li *ngFor="let item of navItems" role="listitem">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="sidebar__link--active"
+        class="sidebar__link"
+        [attr.aria-label]="item.label">
+        <span class="sidebar__icon" [class]="item.icon" aria-hidden="true"></span>
+        <span class="sidebar__label">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</nav>

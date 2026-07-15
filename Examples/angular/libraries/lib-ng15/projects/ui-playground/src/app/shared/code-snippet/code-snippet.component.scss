@@ -1,0 +1,49 @@
+.op-code {
+  border: 1px solid var(--surface-border, #dee2e6);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1e1e2e;
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.75rem;
+    background: #2a2a3c;
+  }
+
+  &__lang {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #b8b8d0;
+  }
+
+  &__copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: none;
+    background: transparent;
+    color: #cdd6f4;
+    cursor: pointer;
+    font-size: 0.78rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &__pre {
+    margin: 0;
+    padding: 0.9rem 1rem;
+    overflow-x: auto;
+    color: #e6e6f0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    white-space: pre;
+  }
+}
